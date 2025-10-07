@@ -27,7 +27,7 @@ def load_model(model_name: str) -> tuple[AlexNetFeatures | VGG16Features, list[j
     linear_weights_file = hf_hub_download(
         repo_id="tux-type/jaxlpips", filename=model_name + "_lpips.safetensors"
     )
-    linear_weights = list(load_file(linear_weights_file).values())
+    linear_weights = nnx.List(load_file(linear_weights_file).values())
 
     model = to_nnx(model_weights, lambda: model_class(rngs=nnx.Rngs(0)))
     return model, linear_weights
