@@ -11,7 +11,7 @@ from jaxlpips.modules import AlexNetFeatures, VGG16Features
 ModelType = TypeVar("ModelType", bound=nnx.Module)
 
 
-def load_model(model_name: str) -> tuple[AlexNetFeatures | VGG16Features, list[jax.Array]]:
+def load_model(model_name: str) -> tuple[AlexNetFeatures | VGG16Features, nnx.List[jax.Array]]:
     match model_name:
         case "alexnet":
             model_class = AlexNetFeatures
